@@ -1,0 +1,132 @@
+<form (ngSubmit)="done()" class="row" [formGroup]="checkoutParentGroup">
+        <div formGroupName="data" class="col-md-8 myorder data">
+          <label class="myla">Your Data</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" >@</span>
+            <input formControlName="fullName" type="text" class="form-control" placeholder="Full Name" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          <div *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)">
+            <div *ngIf="fullName.errors.required || fullName.errors.noSpace" class="alert alert-danger" role="alert">
+              Full Name Is Required
+            </div>
+            <div *ngIf="fullName.errors.minlength" class="alert alert-danger" role="alert">
+              Full Name must be not less than 6 digit
+            </div>
+          </div>
+
+          <div class="input-group mb-3">
+            <input formControlName="gmail" type="text" class="form-control" placeholder="gmail" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <span class="input-group-text" >@gmail.com</span>
+          </div>
+
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" >
+            <div *ngIf="email.errors.required" class="alert alert-danger" role="alert">
+              Email is Required
+            </div>
+            <div *ngIf="email.errors.pattern" class="alert alert-danger" role="alert">
+              Invalid Email
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text">Phone Number</span>
+            <input formControlName="phone" type="text" class="form-control" placeholder="Phone Number" aria-describedby="basic-addon3">
+          </div>
+          <div *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+              <div *ngIf="phone.errors.required" class="alert alert-danger" role="alert">
+                Phone is Required
+              </div>
+              <div *ngIf="phone.errors.maxlength" class="alert alert-danger" role="alert">
+                Phone must be not more than 11 digit
+              </div>
+              <div *ngIf="phone.errors.minlength" class="alert alert-danger" role="alert">
+                Phone must be not less than 11 digit
+              </div>
+              <div *ngIf="phone.errors.pattern" class="alert alert-danger" role="alert">
+                Invalid Phone
+              </div>
+          </div>
+        </div>
+
+
+        <div formGroupName="fromPerson" class="col-md-8 myorder data">
+          <label class="myla">From : </label>
+          <div class="input-group mb-3">
+            <select (change)="getStatesByCode('fromPerson')" formControlName="country" class="form-select">
+              <option [ngValue]="temp.code" *ngFor="let temp of countries">{{temp.name}}</option>
+            </select>
+            <label class="input-group-text myin" for="inputGroupSelect02">Country</label>
+          </div>
+          <div class="input-group mb-3">
+            <select formControlName="state" class="form-select" id="inputGroupSelect02">
+              <option [ngValue]="temp" *ngFor="let temp of statesFromPerson">{{temp.name}}</option>
+            </select>
+            <label class="input-group-text myin" for="inputGroupSelect02">State</label>
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text">Zip Code</span>
+            <input formControlName="zipCode" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+          </div>
+
+        </div>
+
+        <div class="col-md-8 myorder data">
+          <div class="form-check form-switch">
+            <input (change)="similarGroup($event)" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
+            <label class="form-check-label smi" for="flexSwitchCheckChecked">Similar</label>
+          </div>
+        </div>
+
+        <div formGroupName="toPerson" class="col-md-8 myorder data">
+          <label class="myla">To :</label>
+          <div class="input-group mb-3">
+            <select (change)="getStatesByCode('toPerson')" formControlName="country" class="form-select">
+              <option [ngValue]="temp.code" *ngFor="let temp of countries">{{temp.name}}</option>
+            </select>
+            <label class="input-group-text myin" for="inputGroupSelect02">Country</label>
+          </div>
+          <div class="input-group mb-3">
+            <select formControlName="state" class="form-select" >
+              <option [ngValue]="temp" *ngFor="let temp of statesToPerson">{{temp.name}}</option>
+            </select>
+            <label class="input-group-text myin" >State</label>
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">Zip Code</span>
+            <input formControlName="zipCode" type="text" class="form-control" aria-describedby="basic-addon3">
+          </div>
+
+        </div>
+
+  <div formGroupName="creditCard" class="col-md-8 myorder data">
+    <label class="myla">Card Type :</label>
+    <div class="input-group mb-3">
+      <select formControlName="cardType" class="form-select">
+        <option value="1">Visa</option>
+        <option value="2">Card</option>
+      </select>
+      <label class="input-group-text myin" for="inputGroupSelect02">Type</label>
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text" >Card Number</span>
+      <input formControlName="cardNumber" type="text" class="form-control" aria-describedby="basic-addon3">
+    </div>
+
+    <div class="input-group mb-3">
+      <label class="input-group-text myin" for="inputGroupSelect02">Code</label>
+      <input formControlName="code" type="text" class="form-control" aria-describedby="basic-addon3">
+
+    </div>
+
+  </div>
+
+        <div class="check-out">
+          <div class="size">Total Order : {{totalSize}}</div>
+          <div class="totalprice">Total Price : {{totalPrice}}</div>
+          <button type="submit" class="btn btn-primary done">Check Out</button>
+        </div>
+
+
+</form>
+
+

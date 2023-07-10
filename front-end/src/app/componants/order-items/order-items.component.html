@@ -1,0 +1,18 @@
+<div class="row">
+  <div *ngFor="let temp of orders" class="col-md-4 myorder">
+    <div class="card order-item">
+      <a routerLink="/status/{{temp.id}}/{{temp.img}}/{{temp.name}}/{{temp.price}}" routerLink="/order/{{temp.id}}">
+        <img src="assets/{{temp.img}}" alt="Denim Jeans" style="width:100%">
+      </a>
+      <a routerLink="/status/{{temp.id}}/{{temp.img}}/{{temp.name}}/{{temp.price}}">
+        <h1>{{temp.name}}</h1>
+      </a>
+      <p class="price">{{temp.price | currency: 'USD'}}</p>
+      <button routerLink="/status/{{temp.id}}/{{temp.img}}/{{temp.name}}/{{temp.price}}" class="btn btn-primary mybu">Start</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="orders?.length == 0" class="alert alert-danger" role="alert">
+  No Devices Found
+</div>

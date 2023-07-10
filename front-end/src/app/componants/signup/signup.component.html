@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="d-flex justify-content-center h-100 myheight">
+    <div class="card">
+      <div class="card-header">
+        <h3>Sign Up</h3>
+        <div class="d-flex justify-content-end social_icon">
+        </div>
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="done()" [formGroup]="checkoutParentGroup">
+          <div formGroupName="user">
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+              </div>
+              <input formControlName="name" type="text" class="form-control" placeholder="name">
+            </div>
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+              </div>
+              <input formControlName="email" type="text" class="form-control" placeholder="email">
+            </div>
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-key"></i></span>
+              </div>
+              <input formControlName="password" type="password" class="form-control" placeholder="password">
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn float-right login_btn">Sign Up</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <div class="d-flex justify-content-center links">
+          <a routerLink="/login">login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

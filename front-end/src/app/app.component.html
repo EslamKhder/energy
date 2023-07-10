@@ -1,0 +1,60 @@
+
+<!-- ======= Mobile nav toggle button ======= -->
+<button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+<!-- ======= Header ======= -->
+<header id="header">
+  <div class="d-flex flex-column">
+
+    <div class="profile">
+      <img src="assets/img/profile-img.png" alt="" class="img-fluid rounded-circle">
+      <h1 class="text-light"><a routerLink="/orders">Energy Profile</a></h1>
+<!--      <div class="social-links mt-3 text-center">-->
+<!--        <a href="https://www.facebook.com/eslam.khder.98"  target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>-->
+<!--        <a href="https://www.instagram.com/eslam_khder" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>-->
+<!--        <a href="https://www.linkedin.cn/in/eslam-khder-4145351b0" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>-->
+<!--      </div>-->
+    </div>
+
+    <nav class="nav-menu">
+      <app-category-items *ngIf="isLogin()"></app-category-items>
+    </nav><!-- .nav-menu -->
+    <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+  </div>
+</header><!-- End Header -->
+
+<!-- Start Navbar -->
+<nav class="mynav navbar navbar-expand-lg navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/orders">Energy Profile</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          <app-dropdown-menu *ngIf="isLogin()"></app-dropdown-menu>
+
+      </ul>
+      <app-search-order></app-search-order>
+    </div>
+
+  </div>
+</nav>
+<!-- Start Order -->
+<nav class="maindiv">
+  <div class="container">
+
+      <router-outlet></router-outlet>
+
+  </div>
+</nav>
+<!-- ======= Footer ======= -->
+<footer id="footer">
+  <div class="container">
+    <div class="credits">
+      Designed by <a>Team</a>
+    </div>
+  </div>
+</footer><!-- End  Footer -->
